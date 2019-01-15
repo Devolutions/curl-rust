@@ -33,7 +33,8 @@ fn conan_build() {
 
 fn main() {
     if let Ok(_) = env::var("CARGO_FEATURE_CONAN_BUILD") {
-        conan_build()
+        conan_build();
+        return;
     }
 
     let target = env::var("TARGET").unwrap();
