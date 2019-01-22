@@ -39,7 +39,7 @@ mio-extras = "2.0.3"
 members = ["systest"]
 
 [features]
-default = ["ssl"]
+default = []
 ssl = ["openssl-sys", "openssl-probe", "curl-sys/ssl"]
 http2 = ["curl-sys/http2"]
 static-curl = ["curl-sys/static-curl"]
