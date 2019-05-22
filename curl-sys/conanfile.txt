@@ -1,9 +1,4 @@
 
 [requires]
-cargo-generator/0.1.0@devolutions/stable
 curl/7.58.0@devolutions/stable
 mbedtls/2.4.1@devolutions/stable
-
-[generators]
-cargo
-
