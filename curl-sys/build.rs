@@ -18,6 +18,7 @@ fn main() {
 
     let command = InstallCommandBuilder::new()
         .with_profile(&conan_profile)
+        .build_type(BuildType::Release)
         .build_policy(BuildPolicy::Never)
         .recipe_path(Path::new("conanfile.txt"))
         .build();
