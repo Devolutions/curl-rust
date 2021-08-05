@@ -1,0 +1,3 @@
+[requires]
+curl/7.78.0-1@devolutions/stable
+mbedtls/2.16.0-6@devolutions/stable

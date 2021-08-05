@@ -2,8 +2,28 @@ use std::env;
 use std::fs;
 use std::path::{Path, PathBuf};
 use std::process::Command;
+use conan::*;
 
 fn main() {
+    let target_os = env::var("CARGO_CFG_TARGET_OS").unwrap();
+    let target_arch = env::var("CARGO_CFG_TARGET_ARCH").unwrap();
+    let conan_profile = format!("{}-{}", target_os, target_arch);
+
+    let command = InstallCommandBuilder::new()
+        .with_profile(&conan_profile)
+        .build_type(BuildType::Release)
+        .build_policy(BuildPolicy::Never)
+        .recipe_path(Path::new("conanfile.txt"))
+        .build();
+
+    if let Some(build_info) = command.generate() {
+        println!("using conan build info");
+        build_info.cargo_emit();
+        return;
+    } else {
+        println!("failed to use conan build info");
+    }
+
     let host = env::var("HOST").unwrap();
     let target = env::var("TARGET").unwrap();
     let windows = target.contains("windows");
